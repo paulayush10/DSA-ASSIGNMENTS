@@ -1,0 +1,1245 @@
+============================================================
+QUESTION 1
+PROGRAM TO PRINT "DSA" 5 TIMES
+============================================================
+
+#include <stdio.h>
+
+int main() {
+    int i;
+
+    for (i = 1; i <= 5; i++) {
+        printf("DSA\n");
+    }
+
+    return 0;
+}
+
+OUTPUT:
+DSA
+DSA
+DSA
+DSA
+DSA
+
+
+============================================================
+QUESTION 2
+CHECKING FOR LOOP
+============================================================
+
+#include <stdio.h>
+
+int main() {
+    int i;
+
+    for (i = 1; i <= 10; i++) {
+        printf("%d ", i);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+1 2 3 4 5 6 7 8 9 10
+
+
+============================================================
+QUESTION 3
+PRINT THE FOLLOWING PATTERN
+============================================================
+
+*
+* *
+* * *
+* * * *
+
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &num);
+
+    for (int i = 1; i <= num; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Enter number of rows: 4
+
+*
+* *
+* * *
+* * * *
+
+
+============================================================
+QUESTION 4
+PRINT THE FOLLOWING PATTERN
+============================================================
+
+* * * *
+* * *
+* *
+*
+
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &num);
+
+    for (int i = num; i >= 1; i--) {
+        for (int j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Enter number of rows: 4
+
+* * * *
+* * *
+* *
+*
+
+
+============================================================
+QUESTION 5
+FACTORIAL USING RECURSION AND ITERATION
+============================================================
+
+#include <stdio.h>
+
+int factorialRec(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+
+    return n * factorialRec(n - 1);
+}
+
+int factorialItr(int n) {
+    int fact = 1;
+
+    for (int i = 1; i <= n; i++) {
+        fact = fact * i;
+    }
+
+    return fact;
+}
+
+int main() {
+    int a = 5;
+
+    printf("Factorial using Iteration = %d\n", factorialItr(a));
+    printf("Factorial using Recursion = %d\n", factorialRec(a));
+
+    return 0;
+}
+
+OUTPUT:
+Factorial using Iteration = 120
+Factorial using Recursion = 120
+
+
+============================================================
+QUESTION 6
+IDENTIFY THE TYPE OF DATA STRUCTURE
+(Array, Linked List, Tree, Graph)
+============================================================
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char dsName[20];
+
+    printf("Enter name (Array, LL, Tree, Graph): ");
+    scanf("%s", dsName);
+
+    if (strcmp(dsName, "Array") == 0 ||
+        strcmp(dsName, "LL") == 0) {
+
+        printf("%s is a LINEAR data structure.\n", dsName);
+
+    } else {
+        printf("Unknown Data Structure!\n");
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Enter name (Array, LL, Tree, Graph): Array
+Array is a LINEAR data structure.
+
+
+============================================================
+QUESTION 7
+INPUT ONE 1-D ARRAY AND ONE 2-D ARRAY,
+ACCESS ONE ELEMENT FROM BOTH AND TRAVERSE BOTH
+============================================================
+
+#include <stdio.h>
+
+int main() {
+    int arr1D[3] = {10, 20, 30};
+    int arr2D[2][2] = {{1, 2}, {3, 4}};
+    int i, j;
+
+    printf("Accessing 1-D element: %d\n", arr1D[1]);
+    printf("Accessing 2-D element: %d\n", arr2D[0][0]);
+
+    printf("Traversing 1-D Array:\n");
+
+    for (i = 0; i < 3; i++) {
+        printf("%d ", arr1D[i]);
+    }
+
+    printf("\n");
+
+    printf("Traversing 2-D Array:\n");
+
+    for (i = 0; i < 2; i++) {
+        for (j = 0; j < 2; j++) {
+            printf("%d ", arr2D[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Accessing 1-D element: 20
+Accessing 2-D element: 1
+Traversing 1-D Array:
+10 20 30
+Traversing 2-D Array:
+1 2
+3 4
+
+
+============================================================
+QUESTION 8
+INSERT AN ELEMENT IN AN ARRAY USING FUNCTION
+============================================================
+
+#include <stdio.h>
+
+void insert(int arr[], int *size, int pos, int item) {
+    for (int i = *size; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+
+    arr[pos] = item;
+    (*size)++;
+}
+
+void display(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n");
+}
+
+int main() {
+    int arr[10] = {10, 20, 30, 40, 50};
+    int size = 5;
+    int pos = 2;
+    int item = 39;
+
+    printf("Before:\n");
+    display(arr, size);
+
+    insert(arr, &size, pos, item);
+
+    printf("After:\n");
+    display(arr, size);
+
+    return 0;
+}
+
+OUTPUT:
+Before:
+10 20 30 40 50
+
+After:
+10 20 39 30 40 50
+
+
+============================================================
+QUESTION 9
+DELETE AN ELEMENT FROM AN ARRAY USING FUNCTION
+============================================================
+
+#include <stdio.h>
+
+void display(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n");
+}
+
+void deleteElement(int arr[], int *size, int pos) {
+    for (int i = pos; i < *size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    (*size)--;
+}
+
+int main() {
+    int arr[20] = {10, 20, 30, 40, 50};
+    int size = 5;
+    int pos = 2;
+
+    printf("Before delete:\n");
+    display(arr, size);
+
+    deleteElement(arr, &size, pos);
+
+    printf("After delete:\n");
+    display(arr, size);
+
+    return 0;
+}
+
+OUTPUT:
+Before delete:
+10 20 30 40 50
+
+After delete:
+10 20 40 50
+
+
+============================================================
+QUESTION 10
+LINEAR SEARCH USING FUNCTION
+============================================================
+
+#include <stdio.h>
+
+int linearSearch(int arr[], int size, int key) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == key) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int main() {
+    int arr[] = {12, 45, 7, 31, 30};
+    int size = 5;
+    int key = 31;
+
+    int result = linearSearch(arr, size, key);
+
+    if (result != -1) {
+        printf("Success: Element %d found at index %d.\n",
+               key, result);
+    } else {
+        printf("Failure: Element %d not found.\n", key);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Success: Element 31 found at index 3.
+
+
+============================================================
+QUESTION 11
+BINARY SEARCH (ITERATIVE) USING FUNCTION
+============================================================
+
+#include <stdio.h>
+
+int binarySearch(int arr[], int size, int key) {
+    int low = 0;
+    int high = size - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == key) {
+            return mid;
+        }
+        else if (arr[mid] < key) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int size = 5;
+    int key = 40;
+
+    int result = binarySearch(arr, size, key);
+
+    if (result != -1) {
+        printf("Found %d at index %d.\n", key, result);
+    }
+    else {
+        printf("%d not found.\n", key);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Found 40 at index 3.
+
+
+============================================================
+QUESTION 12
+BINARY SEARCH (RECURSIVE) USING FUNCTION
+============================================================
+
+#include <stdio.h>
+
+int binarySearch(int arr[], int low, int high, int key) {
+    if (low > high) {
+        return -1;
+    }
+
+    int mid = low + (high - low) / 2;
+
+    if (arr[mid] == key) {
+        return mid;
+    }
+    else if (arr[mid] < key) {
+        return binarySearch(arr, mid + 1, high, key);
+    }
+    else {
+        return binarySearch(arr, low, mid - 1, key);
+    }
+}
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int size = 5;
+    int key = 40;
+
+    int result = binarySearch(arr, 0, size - 1, key);
+
+    if (result != -1) {
+        printf("Element found at index %d.\n", result);
+    }
+    else {
+        printf("Element not found.\n");
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Element found at index 3.
+
+
+============================================================
+QUESTION 13
+WRITE A C PROGRAM USING POINTER AND DOUBLE POINTER
+============================================================
+
+#include <stdio.h>
+
+int main() {
+    int age = 25;
+
+    int *p = &age;
+    int **pp = &p;
+
+    printf("%d, %d, %d\n", age, *p, **pp);
+
+    (*p)++;
+
+    printf("%d, %d, %d\n", age, *p, **pp);
+
+    **pp += 10;
+
+    printf("%d, %d, %d\n", age, *p, **pp);
+
+    int x = 50;
+
+    *pp = &x;
+
+    printf("%d, %d, %d\n", x, *p, **pp);
+
+    (*p) = 5;
+
+    printf("%d, %d, %d\n", age, x, *p);
+
+    printf("%d, %d\n", age, x);
+
+    return 0;
+}
+
+OUTPUT:
+25, 25, 25
+26, 26, 26
+36, 36, 36
+50, 50, 50
+5, 5, 5
+36, 5
+
+
+============================================================
+QUESTION 14
+ACCESS ONE ELEMENT OF AN ARRAY USING POINTER
+============================================================
+
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, pos;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements: ");
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter position to access: ");
+    scanf("%d", &pos);
+
+    printf("Element = %d\n", *(arr + pos));
+    printf("Found at index = %d\n", pos);
+
+    return 0;
+}
+
+SAMPLE OUTPUT:
+Enter number of elements: 3
+Enter elements: 12 4 7
+Enter position to access: 2
+Element = 7
+Found at index = 2
+
+
+============================================================
+QUESTION 15
+TRAVERSE AN ARRAY USING FUNCTION
+============================================================
+
+#include <stdio.h>
+
+void traverseArray(int *arr, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("Elements at index %d: %d\n",
+               i, *(arr + i));
+    }
+}
+
+int main() {
+    int array[] = {10, 20, 30, 40, 50};
+
+    int length = sizeof(array) / sizeof(array[0]);
+
+    printf("Traversing the array using function:\n");
+
+    traverseArray(array, length);
+
+    return 0;
+}
+
+OUTPUT:
+Traversing the array using function:
+Elements at index 0: 10
+Elements at index 1: 20
+Elements at index 2: 30
+Elements at index 3: 40
+Elements at index 4: 50
+
+
+============================================================
+QUESTION 16
+LINEAR SEARCH USING POINTER
+============================================================
+
+#include <stdio.h>
+
+int linearSearch(int arr[], int size, int key) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == key) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int main() {
+    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int key = 5;
+
+    int result = linearSearch(arr, size, key);
+
+    if (result != -1) {
+        printf("Element %d found at index : %d\n",
+               key, result);
+    }
+    else {
+        printf("Element %d not found.\n", key);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Element 5 found at index : 4
+
+
+============================================================
+QUESTION 17
+USE SWITCH CASE TO CALCULATE ADDITION
+OF A 2-D ARRAY (ROW MAJOR / COLUMN MAJOR)
+============================================================
+
+#include <stdio.h>
+
+int main() {
+    int arr[2][2] = {{1, 2}, {3, 4}};
+    int choice;
+    int i, j;
+
+    printf("Press 1 for Row major\n");
+    printf("Press 2 for Column major\n");
+    scanf("%d", &choice);
+
+    switch (choice) {
+
+        case 1:
+            printf("Row-wise addition:\n");
+
+            for (i = 0; i < 2; i++) {
+                int sum = 0;
+
+                for (j = 0; j < 2; j++) {
+                    sum += arr[i][j];
+                }
+
+                printf("Row %d = %d\n", i + 1, sum);
+            }
+
+            break;
+
+        case 2:
+            printf("Column-wise addition:\n");
+
+            for (j = 0; j < 2; j++) {
+                int sum = 0;
+
+                for (i = 0; i < 2; i++) {
+                    sum += arr[i][j];
+                }
+
+                printf("Column %d = %d\n", j + 1, sum);
+            }
+
+            break;
+
+        default:
+            printf("Invalid choice.\n");
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Press 1 for Row major
+Press 2 for Column major
+1
+
+Row-wise addition:
+Row 1 = 3
+Row 2 = 7
+
+
+============================================================
+QUESTION 18
+IMPLEMENT BUBBLE SORT
+============================================================
+
+#include <stdio.h>
+
+void bubbleSort(int array[], int size) {
+    int step, i;
+
+    for (step = 0; step < size - 1; step++) {
+
+        for (i = 0; i < size - step - 1; i++) {
+
+            if (array[i] > array[i + 1]) {
+                int temp = array[i];
+
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int data[] = {6, 4, 7, 8, 1, 9, 5};
+
+    int size = sizeof(data) / sizeof(data[0]);
+
+    bubbleSort(data, size);
+
+    printf("Sorted array: ");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", data[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Sorted array: 1 4 5 6 7 8 9
+
+
+============================================================
+QUESTION 19
+IMPLEMENT SELECTION SORT
+============================================================
+
+#include <stdio.h>
+
+void selectionSort(int array[], int size) {
+    int step, i;
+
+    for (step = 0; step < size - 1; step++) {
+
+        int min_idx = step;
+
+        for (i = step + 1; i < size; i++) {
+
+            if (array[i] < array[min_idx]) {
+                min_idx = i;
+            }
+        }
+
+        int temp = array[min_idx];
+
+        array[min_idx] = array[step];
+        array[step] = temp;
+    }
+}
+
+int main() {
+    int data[] = {6, 4, 7, 8, 1, 9, 5};
+
+    int size = sizeof(data) / sizeof(data[0]);
+
+    selectionSort(data, size);
+
+    printf("Sorted array: ");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", data[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Sorted array: 1 4 5 6 7 8 9
+
+
+============================================================
+QUESTION 20
+IMPLEMENT INSERTION SORT
+============================================================
+
+#include <stdio.h>
+
+void insertionSort(int array[], int size) {
+    int step, i;
+
+    for (step = 1; step < size; step++) {
+
+        int key = array[step];
+
+        i = step - 1;
+
+        while (i >= 0 && key < array[i]) {
+            array[i + 1] = array[i];
+            i--;
+        }
+
+        array[i + 1] = key;
+    }
+}
+
+int main() {
+    int data[] = {6, 4, 7, 8, 1, 9, 5};
+
+    int size = sizeof(data) / sizeof(data[0]);
+
+    insertionSort(data, size);
+
+    printf("Sorted array: ");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", data[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Sorted array: 1 4 5 6 7 8 9
+
+
+============================================================
+QUESTION 21
+MODIFIED BUBBLE SORT USING SWAP FLAG
+============================================================
+
+#include <stdio.h>
+
+void bubbleSort(int array[], int size) {
+    int step, i;
+    int swap;
+
+    for (step = 0; step < size - 1; step++) {
+
+        swap = 0;
+
+        for (i = 0; i < size - step - 1; i++) {
+
+            if (array[i] > array[i + 1]) {
+
+                int temp = array[i];
+
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+
+                swap = 1;
+            }
+        }
+
+        if (swap == 0) {
+            break;
+        }
+    }
+}
+
+int main() {
+    int data[] = {7, 5, 4, 8, 1};
+
+    int size = sizeof(data) / sizeof(data[0]);
+
+    bubbleSort(data, size);
+
+    printf("Sorted array: ");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", data[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Sorted array: 1 4 5 7 8
+
+
+============================================================
+QUESTION 22
+MODIFIED SELECTION SORT
+(MINIMUM INDEX + MAXIMUM INDEX TOGETHER)
+============================================================
+
+#include <stdio.h>
+
+void selectionSort(int array[], int size) {
+    int step, i;
+
+    /* Minimum element */
+    for (step = 0; step < size - 1; step++) {
+
+        int min_idx = step;
+
+        for (i = step + 1; i < size; i++) {
+
+            if (array[i] < array[min_idx]) {
+                min_idx = i;
+            }
+        }
+
+        int temp = array[min_idx];
+
+        array[min_idx] = array[step];
+        array[step] = temp;
+    }
+
+    printf("After minimum selection: ");
+
+    for (i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+
+    printf("\n");
+
+    /* Maximum element */
+    for (step = size - 1; step > 0; step--) {
+
+        int max_idx = step;
+
+        for (i = step - 1; i >= 0; i--) {
+
+            if (array[i] > array[max_idx]) {
+                max_idx = i;
+            }
+        }
+
+        int temp = array[max_idx];
+
+        array[max_idx] = array[step];
+        array[step] = temp;
+    }
+}
+
+int main() {
+    int data[] = {7, 5, 4, 8, 1};
+
+    int size = sizeof(data) / sizeof(data[0]);
+
+    selectionSort(data, size);
+
+    printf("Sorted array: ");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", data[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+After minimum selection: 1 4 5 8 7
+Sorted array: 1 4 5 7 8
+
+
+============================================================
+QUESTION 23
+IMPLEMENT QUICK SORT
+============================================================
+
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+
+    return i + 1;
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    int arr[] = {7, 5, 4, 8, 1};
+
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    quickSort(arr, 0, size - 1);
+
+    printf("Sorted array: ");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Sorted array: 1 4 5 7 8
+
+
+============================================================
+QUESTION 24
+IMPLEMENT MERGE SORT
+============================================================
+
+#include <stdio.h>
+
+void merge(int arr[], int low, int mid, int high) {
+    int i = low;
+    int j = mid + 1;
+    int k = 0;
+
+    int temp[100];
+
+    while (i <= mid && j <= high) {
+
+        if (arr[i] < arr[j]) {
+            temp[k] = arr[i];
+            i++;
+        }
+        else {
+            temp[k] = arr[j];
+            j++;
+        }
+
+        k++;
+    }
+
+    while (i <= mid) {
+        temp[k] = arr[i];
+        i++;
+        k++;
+    }
+
+    while (j <= high) {
+        temp[k] = arr[j];
+        j++;
+        k++;
+    }
+
+    for (i = low, k = 0; i <= high; i++, k++) {
+        arr[i] = temp[k];
+    }
+}
+
+void mergeSort(int arr[], int low, int high) {
+    if (low < high) {
+
+        int mid = (low + high) / 2;
+
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid + 1, high);
+
+        merge(arr, low, mid, high);
+    }
+}
+
+int main() {
+    int arr[] = {7, 5, 4, 8, 1};
+
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    mergeSort(arr, 0, size - 1);
+
+    printf("Sorted array: ");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Sorted array: 1 4 5 7 8
+
+
+============================================================
+QUESTION 25
+IMPLEMENT STACK AND QUEUE
+============================================================
+
+---------------- STACK ----------------
+
+#include <stdio.h>
+
+#define SIZE 5
+
+int stack[SIZE];
+int top = -1;
+
+void push(int value) {
+    if (top == SIZE - 1) {
+        printf("Stack Overflow\n");
+    }
+    else {
+        top++;
+        stack[top] = value;
+        printf("%d pushed into stack\n", value);
+    }
+}
+
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
+    }
+    else {
+        printf("%d popped from stack\n", stack[top]);
+        top--;
+    }
+}
+
+void displayStack() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+    }
+    else {
+        printf("Stack: ");
+
+        for (int i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+
+        printf("\n");
+    }
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+
+    displayStack();
+
+    pop();
+
+    displayStack();
+
+    return 0;
+}
+
+OUTPUT:
+10 pushed into stack
+20 pushed into stack
+30 pushed into stack
+Stack: 30 20 10
+30 popped from stack
+Stack: 20 10
+
+
+---------------- QUEUE ----------------
+
+#include <stdio.h>
+
+#define SIZE 5
+
+int queue[SIZE];
+int front = -1;
+int rear = -1;
+
+void enqueue(int value) {
+
+    if (rear == SIZE - 1) {
+        printf("Queue is Full\n");
+    }
+    else {
+
+        if (front == -1) {
+            front = 0;
+        }
+
+        rear++;
+        queue[rear] = value;
+
+        printf("%d inserted into queue\n", value);
+    }
+}
+
+void dequeue() {
+
+    if (front == -1 || front > rear) {
+        printf("Queue is Empty\n");
+    }
+    else {
+        printf("%d deleted from queue\n", queue[front]);
+        front++;
+    }
+}
+
+void displayQueue() {
+
+    if (front == -1 || front > rear) {
+        printf("Queue is Empty\n");
+    }
+    else {
+
+        printf("Queue: ");
+
+        for (int i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+
+        printf("\n");
+    }
+}
+
+int main() {
+
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+
+    displayQueue();
+
+    dequeue();
+
+    displayQueue();
+
+    return 0;
+}
+
+OUTPUT:
+10 inserted into queue
+20 inserted into queue
+30 inserted into queue
+Queue: 10 20 30
+10 deleted from queue
+Queue: 20 30
